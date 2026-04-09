@@ -1,6 +1,6 @@
 # MyAgent
 
-基于 Python 的简单对话 Agent：通过 **OpenAI 兼容 API** 调用大模型，支持 **命令行交互** 与 **HTTP 服务**（FastAPI）。
+基于 Python 的简单对话 Agent：使用 **LangChain + OpenAI 兼容 API** 调用大模型，支持 **命令行交互** 与 **HTTP 服务**（FastAPI）。
 
 ## 环境要求
 
@@ -168,6 +168,13 @@ agent = ChatAgent(
 print(agent.reply("什么是列表推导式？"))
 agent.reset()
 ```
+
+## LangChain 能力说明
+
+- `PromptTemplate`：使用 `ChatPromptTemplate + MessagesPlaceholder` 统一系统提示与上下文拼装。
+- `Memory`：使用 `ConversationBufferMemory` 保存多轮对话历史；`/v1/chat/reset` 或 `agent.reset()` 可清空。
+- `Tools`：内置一个工具，模型可按需自动调用：
+  - `get_current_time`：返回本地当前时间
 
 ---
 
